@@ -268,14 +268,14 @@ switch($_POST['opt'])
 if($user = $_SESSION['user'])
 {
     echo "<div><a>当前用户名: </a><a class=\"user\">$user</a><br/><br/>" .
-        '<form action="index.php" method="post">
+        '<form action="message_board.php" method="post">
         <input type="submit" name="opt" value="退出当前用户">
     </form></div>';
 }
 else
 {
     echo
-    '<div><form action="index.php" method="post">
+    '<div><form action="message_board.php" method="post">
         用户名: <input type="text" name="user">
         密码: <input type="password" name="passwd">
         <br/>
@@ -289,7 +289,7 @@ else
 
 <!--提交留言HTML代码段-->
 <div>
-<form action="index.php" method="post">
+<form action="message_board.php" method="post">
     <input type="hidden" name="opt" value="message">
     <textarea name="text" rows="8" cols="80" autofocus="true" required="true"></textarea>
     <br/>
@@ -308,7 +308,7 @@ $result = mysqli_query($con, $sql);
 
 while($row = mysqli_fetch_array($result))
 {
-    echo "<div class=\"message\"><form action=\"index.php\" method=\"post\"><input type=\"hidden\" name=\"id\" value=\"" . $row['ID'] . "\"><div style=\"float: right;\"><a class=\"id\">#" . $row['ID'] . "</a></div>";
+    echo "<div class=\"message\"><form action=\"message_board.php\" method=\"post\"><input type=\"hidden\" name=\"id\" value=\"" . $row['ID'] . "\"><div style=\"float: right;\"><a class=\"id\">#" . $row['ID'] . "</a></div>";
     echo "<div style=\"float: left;\">用户 <a class=\"user\">" . $row['User'] . "</a> 于 <a class=\"time\">" . $row['Time'] . "</a></div><br/><br/><div style=\"float: bottom;\">";
     echo base64_decode($row['Text']) . "</div><br/>";
     //如果是当前登录用户，则显示删除按钮
